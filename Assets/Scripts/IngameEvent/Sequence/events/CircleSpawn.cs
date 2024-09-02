@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using MEC;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -8,6 +10,9 @@ public class CircleSpawn : WorldEvent
     [SerializeField] private float radius;
     [SerializeField] private int number;
     [SerializeField] private float spawnInterval;
+    [SerializeField] private float angleDistance;
+
+    private List<GameObject> objects;
     
     public override IEnumerator Event()
     {
@@ -26,14 +31,24 @@ public class CircleSpawn : WorldEvent
             var position = new Vector2(x, y);
 
             var instance = Instantiate(objectToSpawn, position, Quaternion.identity);
-
-            angle += Random.Range(30, 78);
+            objects.Add(instance.gameObject);
+            
+            angle += angleDistance;
 
             yield return wait;
         }
-
+        
         InProgress = false;
-        Finished = true;
+        Timing.RunCoroutine(IsInScene());
+    }
 
+    private IEnumerator<float> IsInScene()
+    {
+        while (objects.Exists((i) => i.activeInHierarchy))
+        {
+            yield return Timing.WaitForOneFrame;
+        }
+
+        Finished = true;
     }
 }

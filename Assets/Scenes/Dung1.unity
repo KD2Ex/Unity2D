@@ -29592,6 +29592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - {fileID: 11400000, guid: 05a0d66fd412e4b49aeab328f3ff98fa, type: 2}
+  - {fileID: 11400000, guid: 07cd1e014e49df44a8262c1d0e036b2b, type: 2}
 --- !u!1 &1283949214
 GameObject:
   m_ObjectHideFlags: 0

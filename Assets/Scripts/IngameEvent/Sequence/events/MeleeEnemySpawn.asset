@@ -16,3 +16,4 @@ MonoBehaviour:
   radius: 3
   number: 3
   spawnInterval: 0.4
+  angleDistance: 90
