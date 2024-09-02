@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - WorldUI
+  - KnownPos
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Enemy
+  - Player
+  - Ceiling
+  - Maze
+  - Obstacle
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 3031581973
+    locked: 0
+  - name: TopWalls
+    uniqueID: 3514691439
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BottomWalls
+    uniqueID: 1406741841
+    locked: 0
+  - name: UI
+    uniqueID: 2104671267
+    locked: 0
+  - name: 
+    uniqueID: 2855780177
+    locked: 0
+  - name: Dead
+    uniqueID: 4116359837
+    locked: 0

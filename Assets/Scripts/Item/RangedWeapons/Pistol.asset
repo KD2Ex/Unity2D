@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275837e25f82490ba6cc07fb5f780e31, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 2800000, guid: cff1526428cae4d49b480a61aefafba6, type: 3}
+  <Name>k__BackingField: Pistol
+  AutoEquip: 1
+  stats: {fileID: 11400000, guid: 09bdf334c8f28ad42a266a11ccb4d465, type: 2}

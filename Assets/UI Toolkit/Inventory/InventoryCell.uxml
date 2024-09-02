@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" style="background-image: url(&quot;project://database/Assets/Sprites/Items/InventoryCell.png?fileID=2800000&amp;guid=56de0107fbc9d1c44a1b5a0c67dc239a&amp;type=3#InventoryCell&quot;); width: 128px; height: 128px; align-self: flex-start; align-items: flex-start; -unity-background-image-tint-color: rgb(238, 238, 238); background-color: rgba(188, 188, 188, 0);" />
+</ui:UXML>

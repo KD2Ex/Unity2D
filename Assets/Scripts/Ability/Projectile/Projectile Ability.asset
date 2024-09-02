@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64068a2d0eb18648a66818d39cd44d1, type: 3}
+  m_Name: Projectile Ability
+  m_EditorClassIdentifier: 
+  cooldown: 0.15
+  weapon: {fileID: 11400000, guid: 09bdf334c8f28ad42a266a11ccb4d465, type: 2}
+  projectile: {fileID: 6854690322058460771, guid: b387c58398db2ca4cb25acbe1f8b0368, type: 3}
+  speed: 55
+  sizeScale: 2
