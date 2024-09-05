@@ -38,7 +38,6 @@ public class MeleeWeapon : DirectionalWeapon
     public override void Attack(Vector2 direction, float cooldown)
     {
         if (!canUse) return;
-        Debug.Log(OnDamaging.GetPersistentEventCount());
 
         OnDamaging.Invoke();
         

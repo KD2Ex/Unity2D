@@ -81,8 +81,6 @@ public class Ranged : DirectionalWeapon
 
     public void GenerateAmmo()
     {
-        Debug.Log("generation");
-        
         ammoGeneratingProgress++;
 
         if (ammoGeneratingProgress >= ammoGeneratingThreshold)

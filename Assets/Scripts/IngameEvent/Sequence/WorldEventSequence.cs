@@ -15,6 +15,7 @@ public class WorldEventSequence : MonoBehaviour
     {
         foreach (var worldEvent in events)
         {
+            Debug.Log(worldEvent.name);
             worldEvent.Initialize(transform);
             
             StartCoroutine(worldEvent.Event());

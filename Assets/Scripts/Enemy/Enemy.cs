@@ -28,6 +28,7 @@ public class Enemy : BaseDamagableCharacter, IDamageable
     public UnityEvent AfterSpawn;
 
     private bool isDead;
+    public bool IsDead => isDead;
 
     public bool IsKnockable = true;
     
@@ -164,7 +165,14 @@ public class Enemy : BaseDamagableCharacter, IDamageable
         _animator.SetTrigger("Death");
 
         agent.ResetPath();
-        this.enabled = false;
+
+        StartCoroutine(DestroyCorpse(0f));
+    }
+
+    private IEnumerator DestroyCorpse(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        gameObject.SetActive(false);
     }
 
     public void EnableWeaponCollision()

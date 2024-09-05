@@ -10,7 +10,6 @@ public class GameEvent : ScriptableObject
     {
         foreach (var listener in listeners)
         {
-            Debug.Log("raised " + name);
             listener.OnEventRaised();
         }
     }

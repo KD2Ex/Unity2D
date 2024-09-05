@@ -44,6 +44,7 @@ public class CircleSpawn : WorldEvent
 
     private IEnumerator<float> IsInScene()
     {
+        Debug.Log(objects);
         while (objects.Exists((i) => i.activeInHierarchy))
         {
             yield return Timing.WaitForOneFrame;
