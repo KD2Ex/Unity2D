@@ -12,6 +12,8 @@ public class FollowCursor : MonoBehaviour
 
     [SerializeField] private float xBound = 17f;
     [SerializeField] private float yBound = 10f;
+    [SerializeField] private float minBoundRadius = 3f;
+
 
     private void LateUpdate()
     {
@@ -19,43 +21,48 @@ public class FollowCursor : MonoBehaviour
         var pos =  camera.ScreenToWorldPoint(mousePos);
         pos.z = 0f;
 
-        //if (Mathf.Abs(distance.x) > 17f || Mathf.Abs(distance.y) > 10f) return;
-        //Debug.Log(mousePos.sqrMagnitude);
-
-        /*var xClamp = Mathf.Clamp(pos.x, ParentPos.x - 17f, ParentPos.x + 17f);
-        var yClamp = Mathf.Clamp(pos.y, ParentPos.y - 10f, ParentPos.y + 10f);
+        var distance = pos - ParentPos;
         
-        pos = new Vector3(xClamp, yClamp, 0f);*/
-        var distance = pos - parent.transform.position;
-        
-
         var angle = Mathf.Atan2(distance.y, distance.x);
         var x = xBound * Mathf.Cos(angle);
         var y = yBound * Mathf.Sin(angle);
-
+        
         var xClamp = 0f;
         var yClamp = 0f;
         
-        if (Mathf.Sign(x) > 0.99f)
-        {
-            xClamp = Mathf.Clamp(pos.x, ParentPos.x - x, ParentPos.x + x);
-        }
-        else
-        {
-            xClamp = Mathf.Clamp(pos.x, ParentPos.x + x, ParentPos.x - x);
-        }
+        var minX = ParentPos.x;
+        var maxX = ParentPos.x;
 
-        if (Mathf.Sign(y) > 0.99f)
+        if (distance.magnitude < 3f)
         {
-            yClamp = Mathf.Clamp(pos.y, ParentPos.y - y, ParentPos.y + y);
+            var point = MathUtils.GetPointOnCircle(ParentPos, minBoundRadius, angle * Mathf.Rad2Deg);
+            xClamp = point.x;
+            yClamp = point.y;
         }
         else
         {
-            yClamp = Mathf.Clamp(pos.y, ParentPos.y + y, ParentPos.y - y);
+            if (Mathf.Sign(x) > 0.99f)
+            {
+            
+                xClamp = Mathf.Clamp(pos.x, minX, ParentPos.x + x);
+            }
+            else
+            {
+                xClamp = Mathf.Clamp(pos.x, ParentPos.x + x, maxX);
+            }
+
+            if (Mathf.Sign(y) > 0.99f)
+            {
+                yClamp = Mathf.Clamp(pos.y, ParentPos.y - y, ParentPos.y + y);
+            }
+            else
+            {
+                yClamp = Mathf.Clamp(pos.y, ParentPos.y + y, ParentPos.y - y);
+            }
         }
         
         pos = new Vector3(xClamp, yClamp, 0f);
-        
         transform.position = pos;
     }
+
 }
