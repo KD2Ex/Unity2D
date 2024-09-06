@@ -36,10 +36,10 @@ public class CircleSpawn : WorldEvent
         }
         
         InProgress = false;
-        Timing.RunCoroutine(IsInScene());
+        Finished = true;
     }
 
-    private IEnumerator<float> IsInScene()
+    /*private IEnumerator<float> IsInScene()
     {
         Debug.Log(objects);
         while (objects.Exists((i) => i.activeInHierarchy))
@@ -48,5 +48,5 @@ public class CircleSpawn : WorldEvent
         }
 
         Finished = true;
-    }
+    }*/
 }

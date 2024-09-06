@@ -28,8 +28,6 @@ public class AutoPickup : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        Debug.Log(other.transform.position);
-        
         target = other.transform;
         start = true;
     }

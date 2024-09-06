@@ -29438,6 +29438,7 @@ GameObject:
   - component: {fileID: 1280231819}
   - component: {fileID: 1280231818}
   - component: {fileID: 1280231820}
+  - component: {fileID: 1280231821}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -29527,7 +29528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 07d7847a76b22a64888d62d95a5b0d70, type: 2}
-  OnOpen:
+  OnInteractionEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1280231820}
@@ -29592,6 +29593,42 @@ MonoBehaviour:
   events:
   - {fileID: 11400000, guid: a5bd890e1d791a444a8bb2704714f0b9, type: 2}
   - {fileID: 11400000, guid: 07cd1e014e49df44a8262c1d0e036b2b, type: 2}
+  OnSequenceEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1280231818}
+        m_TargetAssemblyTypeName: Chest, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!95 &1280231821
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280231813}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77f7b112644368744ae2d62f1836962f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1283949214
 GameObject:
   m_ObjectHideFlags: 0

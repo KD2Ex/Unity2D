@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WorldEventSequence : MonoBehaviour
 {
     [SerializeField] private List<WorldEvent> events;
+
+    public UnityEvent OnSequenceEnd;
     
     public void StartSequence()
     {
@@ -21,5 +24,7 @@ public class WorldEventSequence : MonoBehaviour
             StartCoroutine(worldEvent.Event());
             yield return new WaitUntil(() => worldEvent.Finished);
         }
+        
+        OnSequenceEnd.Invoke();
     }
 }

@@ -3,12 +3,21 @@ using UnityEngine.Events;
 
 public class Chest : Interactable
 {
-    public UnityEvent OnOpen;
+    public UnityEvent OnInteractionEvent;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        IsInteractable = true;
+    }
 
     public override void OnInteraction()
     {
         base.OnInteraction();
-        OnOpen.Invoke();
+        if (!IsInteractable) return;
+        
+        OnInteractionEvent.Invoke();
+        IsInteractable = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -19,5 +28,10 @@ public class Chest : Interactable
     private void OnTriggerExit2D(Collider2D other)
     {
         TriggerExit(other.gameObject);
+    }
+
+    public void Open()
+    {
+        animator.SetTrigger("Open");
     }
 }
