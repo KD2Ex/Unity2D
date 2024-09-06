@@ -14,8 +14,6 @@ public class Interactable : MonoBehaviour, IInteractable
     
     protected virtual void TriggerEnter(GameObject other) 
     {
-        Debug.Log("Enter");
-        
         if (!other.CompareTag("Player")) return;
 
         item.Interactable = this;
@@ -30,6 +28,5 @@ public class Interactable : MonoBehaviour, IInteractable
 
     public virtual void OnInteraction()
     {
-        Debug.Log(name);
     }
 }

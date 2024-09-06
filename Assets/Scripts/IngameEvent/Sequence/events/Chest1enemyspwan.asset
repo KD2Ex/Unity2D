@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85eb30086dfc4bb9904bc18b43d8f710, type: 3}
-  m_Name: HealDrop
+  m_Script: {fileID: 11500000, guid: 832f8d523de74d62a5f74d9924c589b6, type: 3}
+  m_Name: Chest1enemyspwan
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 6756328282278670355, guid: ddfdd653837de9e4fb6195b4a282e241, type: 3}
+  objectToSpawn: {fileID: 4491856947624094061, guid: f709dd9f255e20143a5d18d5336496f6, type: 3}
   radius: 3
-  number: 5
-  spawnInterval: 0.1
+  number: 3
+  spawnInterval: 0.2
   angleDistance: 45

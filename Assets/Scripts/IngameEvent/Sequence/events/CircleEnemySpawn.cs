@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MEC;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class CircleSpawn : WorldEvent
+public class CircleEnemySpawn : WorldEvent
 {
     [SerializeField] private GameObject objectToSpawn;
     [SerializeField] private float radius;
@@ -12,10 +13,11 @@ public class CircleSpawn : WorldEvent
     [SerializeField] private float spawnInterval;
     [SerializeField] private float angleDistance;
 
-    private List<GameObject> objects;
+    private List<Enemy> enemies;
     
     public override IEnumerator Event()
     {
+        enemies.Clear();        
         Finished = false;
         InProgress = true;
         
@@ -28,7 +30,15 @@ public class CircleSpawn : WorldEvent
             var position = MathUtils.GetPointOnCircle(Pos, radius, angle);
 
             var instance = Instantiate(objectToSpawn, position, Quaternion.identity);
-            objects.Add(instance.gameObject);
+            var enemy = instance.gameObject.GetComponent<Enemy>();
+            enemy.OnDeath.AddListener(() =>
+            {
+                enemies.Remove(enemy);
+                Debug.Log(enemies.Count);
+            });
+            
+            enemies.Add(enemy);
+            
             
             angle += angleDistance;
 
@@ -36,13 +46,17 @@ public class CircleSpawn : WorldEvent
         }
         
         InProgress = false;
-        Timing.RunCoroutine(IsInScene());
+        Timing.RunCoroutine(IsAlive());
     }
 
-    private IEnumerator<float> IsInScene()
+    private void Remove()
     {
-        Debug.Log(objects);
-        while (objects.Exists((i) => i.activeInHierarchy))
+        
+    }
+    
+    private IEnumerator<float> IsAlive()
+    {
+        while (enemies.Count > 0)
         {
             yield return Timing.WaitForOneFrame;
         }

@@ -23,7 +23,7 @@ public class Enemy : BaseDamagableCharacter, IDamageable
     private bool _isBeingKnocked;
     public HealthComponent Health { get; set; }
 
-    [SerializeField] private UnityEvent OnDeath;
+    public UnityEvent OnDeath;
     public UnityEvent<float, float> OnDamage = new ();
     public UnityEvent AfterSpawn;
 
@@ -166,7 +166,7 @@ public class Enemy : BaseDamagableCharacter, IDamageable
 
         agent.ResetPath();
 
-        StartCoroutine(DestroyCorpse(0f));
+        StartCoroutine(DestroyCorpse(3f));
     }
 
     private IEnumerator DestroyCorpse(float sec)
