@@ -1,5 +1,7 @@
+using System;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour, IInteractable
 {
@@ -8,7 +10,7 @@ public class Interactable : MonoBehaviour, IInteractable
     [SerializeField] protected GameObject UITip;
     //can make this a counter, if multiple interaction needed
     public bool IsInteractable { get; protected set; }
-
+    public UnityEvent OnInteractionEvent;
     [SerializeField] private PlayerInteractableItem item;
     
     protected virtual void Awake()
@@ -16,7 +18,12 @@ public class Interactable : MonoBehaviour, IInteractable
         animator = GetComponent<Animator>();
         IsInteractable = true;
     }
-    
+
+    private void OnEnable()
+    {
+        UITip.SetActive(false);
+    }
+
     protected virtual void TriggerEnter(GameObject other) 
     {
         if (!other.CompareTag("Player")) return;

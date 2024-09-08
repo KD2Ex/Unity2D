@@ -14,7 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     private void Awake()
     {
         owner = GetComponent<Enemy>();
-        //rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         agent = GetComponent<NavMeshAgent>();
     }
 

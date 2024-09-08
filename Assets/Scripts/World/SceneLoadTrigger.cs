@@ -1,13 +1,19 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoadTrigger : MonoBehaviour
 {
+    [SerializeField] private Vector2 position;
+    
     [SerializeField] private string[] _scenesToLoad;
     [SerializeField] private string[] _scenesToUnload;
 
     [SerializeField] private bool onTriggerEnter;
 
+    private GameObject player;
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!onTriggerEnter) return;
@@ -21,6 +27,9 @@ public class SceneLoadTrigger : MonoBehaviour
 
     public void LoadScenes()
     {
+        player = FindObjectOfType<Player>().gameObject;
+        player.transform.position = position;
+        
         foreach (var sceneName in _scenesToLoad)
         {
             bool isSceneLoaded = false;

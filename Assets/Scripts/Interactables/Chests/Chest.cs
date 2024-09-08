@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Chest : Interactable
 {
-    public UnityEvent OnInteractionEvent;
+    
 
     protected override void Awake()
     {

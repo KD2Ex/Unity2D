@@ -18,8 +18,6 @@ public class Drop : MonoBehaviour
         foreach (var dropItem in list)
         {
             var angle = Random.Range(0, 360);
-
-            Debug.Log("Drop angle: " + angle);
             
             for (int i = 0; i < dropItem.amount; i++)
             {

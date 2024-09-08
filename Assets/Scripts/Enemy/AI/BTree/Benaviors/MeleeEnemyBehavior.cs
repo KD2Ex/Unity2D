@@ -38,7 +38,7 @@ public class MeleeEnemyBehavior : EnemyBehavior
             agent.ResetPath();
             BecomeUnstoppable();
         })));
-        attackSequence.AddChild(new Leaf("Attack", new AttackStrategy(weapon, transform, attackSensor)));
+        attackSequence.AddChild(new Leaf("Attack", new AttackStrategy(weapon, rb, attackSensor)));
         attackSequence.AddChild(new Leaf("cooldown", new ActionStrategy(() =>
         {
             RevertUnstoppable();

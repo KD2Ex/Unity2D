@@ -13,9 +13,4 @@ MonoBehaviour:
   m_Name: EnemyProjectile
   m_EditorClassIdentifier: 
   cooldown: 2
-  OnAbilityUse:
-    m_PersistentCalls:
-      m_Calls: []
-  projectile: {fileID: 6854690322058460771, guid: 4e13c7709c2d02346b26cda621125aa6, type: 3}
-  speed: 22
-  sizeScale: 1
+  weapon: {fileID: 11400000, guid: 7911f9fa249a4154a9a8e1438289cb4a, type: 2}
