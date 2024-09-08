@@ -5,10 +5,14 @@ using UnityEngine.Events;
 public class AutoPickup : MonoBehaviour
 {
     [SerializeField] private StatsParticle particle;
+    [SerializeField] private float pickupDelay;
+    
     private Rigidbody2D rb;
     private bool start;
     private Transform target;
 
+    private float elapsedTime;
+    
     public UnityEvent Event;
     
     private void Awake()
@@ -18,6 +22,12 @@ public class AutoPickup : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (elapsedTime < pickupDelay)
+        {
+            elapsedTime += Time.deltaTime;
+            return;
+        }
+        
         if (!start) return;
 
         var direction = (target.position - transform.position).normalized;

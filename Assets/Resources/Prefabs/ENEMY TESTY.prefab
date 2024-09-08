@@ -47,6 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 5380234581895845197}
   enemyTag: Player
+  OnDamaging:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2276421826260467762
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +447,7 @@ GameObject:
   - component: {fileID: 1648792550203488370}
   - component: {fileID: 3484872839925842684}
   - component: {fileID: 6201593139192312564}
+  - component: {fileID: 7415926489465983849}
   m_Layer: 6
   m_Name: ENEMY TESTY
   m_TagString: Enemy
@@ -598,6 +602,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7415926489465983849}
+        m_TargetAssemblyTypeName: Drop, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDamage:
     m_PersistentCalls:
       m_Calls:
@@ -703,7 +719,7 @@ MonoBehaviour:
   MaxHp:
     Variable: {fileID: 11400000, guid: 0ffcf3fa8d3a8e44687cdee7b92ded15, type: 2}
     UseValue: 1
-    floatValue: 60
+    floatValue: 1
 --- !u!70 &3484872839925842684
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -754,6 +770,23 @@ MonoBehaviour:
   attackSensor: {fileID: 3352925374501296685}
   chaseSensor: {fileID: 7493994043289197549}
   weapon: {fileID: 2365802207809228609}
+--- !u!114 &7415926489465983849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4491856947624094061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714be8bd6cff29344a1c5b6f07f8840f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  list:
+  - <item>k__BackingField: {fileID: 6756328282278670355, guid: ddfdd653837de9e4fb6195b4a282e241, type: 3}
+    <amount>k__BackingField: 1
+  speed: 8
+  time: 0.2
 --- !u!1 &5273895309061189132
 GameObject:
   m_ObjectHideFlags: 0

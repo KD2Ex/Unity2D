@@ -4,7 +4,8 @@ using UnityEngine;
 public class Interactable : MonoBehaviour, IInteractable
 {
     protected Animator animator;
-    
+
+    [SerializeField] protected GameObject UITip;
     //can make this a counter, if multiple interaction needed
     public bool IsInteractable { get; protected set; }
 
@@ -20,6 +21,9 @@ public class Interactable : MonoBehaviour, IInteractable
     {
         if (!other.CompareTag("Player")) return;
 
+        if (!IsInteractable) return;
+        
+        UITip.gameObject.SetActive(true);
         item.Interactable = this;
     }
 
@@ -27,6 +31,8 @@ public class Interactable : MonoBehaviour, IInteractable
     {
         if (!other.CompareTag("Player")) return;
 
+        UITip.gameObject.SetActive(false);
+        
         item.Interactable = null;
     }
 

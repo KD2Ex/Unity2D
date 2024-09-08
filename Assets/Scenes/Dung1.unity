@@ -28151,6 +28151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201ac10fae62b6a4baad8a8eb060370e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UITip: {fileID: 0}
   item: {fileID: 0}
 --- !u!95 &739863818
 Animator:
@@ -29527,6 +29528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71ca77886d07224eaeefd2ccf387169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UITip: {fileID: 780392752}
   item: {fileID: 11400000, guid: 07d7847a76b22a64888d62d95a5b0d70, type: 2}
   OnInteractionEvent:
     m_PersistentCalls:
