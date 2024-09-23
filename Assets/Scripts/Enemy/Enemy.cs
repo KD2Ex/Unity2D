@@ -1,6 +1,7 @@
 using System.Collections;
 using Interfaces;
 using Structs;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -17,6 +18,7 @@ public class Enemy : BaseDamagableCharacter, IDamageable
     private Animator _animator;
     private AnimationController animationController;
     private NavMeshAgent agent;
+    private StateBehaviour behaviour;
     
     private int _flashAmountProperty = Shader.PropertyToID("_Amount");
     private float _flashTime = .3f;
@@ -31,9 +33,18 @@ public class Enemy : BaseDamagableCharacter, IDamageable
     public bool IsDead => isDead;
 
     public bool IsKnockable = true;
+    public bool IsBeingKnocked => _isBeingKnocked;
+
+    public NavMeshAgent Agent => agent;
+    public Animator Animator => _animator;
+    //public Transform PlayerTransform => player;
+    public StateBehaviour Behaviour => behaviour;
+    public MeleeWeapon Melee => _melee;
+    
     
     private void Awake()
     {
+        behaviour = GetComponent<StateBehaviour>();
         agent = GetComponent<NavMeshAgent>();
         _melee = GetComponentInChildren<MeleeWeapon>();
         _stunController = GetComponent<StunController>();
@@ -42,6 +53,7 @@ public class Enemy : BaseDamagableCharacter, IDamageable
         _animator = GetComponent<Animator>();
         animationController = GetComponent<AnimationController>();
 
+        
         Health = GetComponent<HealthComponent>();
 
         
@@ -54,6 +66,7 @@ public class Enemy : BaseDamagableCharacter, IDamageable
 
     private void OnEnable()
     {
+        
     }
 
     private void OnDisable()
@@ -64,7 +77,7 @@ public class Enemy : BaseDamagableCharacter, IDamageable
     // Start is called before the first frame update
     void Start()
     {
-            
+
     }
 
     public void OnSpawnAnimationEnd()
@@ -158,7 +171,8 @@ public class Enemy : BaseDamagableCharacter, IDamageable
     {
         isDead = true;
         OnDeath?.Invoke();
-        
+
+        Behaviour.enabled = false;
         DisableWeaponCollision();
         
         SoundManager.instance.PlayClip(deathSound, transform);

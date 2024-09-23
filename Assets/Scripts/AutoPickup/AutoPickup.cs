@@ -6,7 +6,8 @@ public class AutoPickup : MonoBehaviour
 {
     [SerializeField] private StatsParticle particle;
     [SerializeField] private float pickupDelay;
-    
+
+    private bool available;
     private Rigidbody2D rb;
     private bool start;
     private Transform target;
@@ -27,7 +28,8 @@ public class AutoPickup : MonoBehaviour
             elapsedTime += Time.deltaTime;
             return;
         }
-        
+
+        available = true;
         if (!start) return;
 
         var direction = (target.position - transform.position).normalized;
@@ -44,6 +46,8 @@ public class AutoPickup : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (!available) return;
+        
         var visitable = other.gameObject.GetComponent<IVisitable>(); //player
         if (visitable == null) return;
         

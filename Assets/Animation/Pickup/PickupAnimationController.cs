@@ -1,23 +1,50 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using MEC;
 using UnityEngine;
 
 public class PickupAnimationController : MonoBehaviour
 {
-    public Vector2 position;
+    public Vector2 offset;
+    private Rigidbody2D rb;
 
-    private Vector3 Origin;
+    private Move move;
+
+    private float elapsed = 0f;
+    private float time = .2f;
+
+    private Coroutine coroutine;
     
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        move = GetComponent<Move>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Origin = transform.position;
+        StartCoroutine(Loop());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        transform.position = new Vector2(Origin.x + position.x, Origin.y + position.y);
+        Debug.Log("Translate");
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    private IEnumerator Loop()
+    {
+        while (gameObject.activeInHierarchy)
+        {
+            move.BySeconds(Vector2.up, 5f, time);
+            yield return new WaitUntil(() => !move.IsRunning);
+            move.BySeconds(Vector2.down, 5f, time);
+            yield return new WaitUntil(() => !move.IsRunning); 
+        }
     }
 }

@@ -24,6 +24,7 @@ public class Player : BaseDamagableCharacter, IDamageable
     [SerializeField] private PlayerInteractableItem itemInRadius;
     
     private bool dashReady = true;
+    private bool invincible;
     
     [Header("VFX")]
 
@@ -47,7 +48,7 @@ public class Player : BaseDamagableCharacter, IDamageable
     
     private delegate void AttackAction(Vector2 direction, float cooldown = 0f);
     private AttackAction attackAction;
-
+    
     public bool IsAiming { get; private set; }
     public bool IsDead { get; set; }
     
@@ -220,15 +221,24 @@ public class Player : BaseDamagableCharacter, IDamageable
     public void TakeDamage(DamageMessage message)
     {
         if (IsDead) return;
+        if (invincible) return;
         if (_isFlashing) StopCoroutine(nameof(Flash));
         StartCoroutine(Flash(_sprite, _flashAmountProperty, _flashTime));
         
-        Health.Add(-message.Value); ;
+        Health.Add(-message.Value);
 
         if (Health.Value <= 0)
         {
             Die();
+            return;
         }
+        
+        BecomeInvincible(.3f);
+    }
+
+    private void BecomeInvincible(float time)
+    {
+        StartCoroutine(Utils.Cooldown.Cooldown.Start(time, value => invincible = !value));
     }
 
     public void Die()

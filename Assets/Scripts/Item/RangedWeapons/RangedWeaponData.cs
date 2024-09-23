@@ -9,7 +9,17 @@ public class RangedWeaponData : ScriptableObject
     public float SizeScale;
 
     public int Ammo;
-    public int CurrentAmmo;
-    
+
+    private int currentAmmo;
+    public int CurrentAmmo
+    {
+        get => currentAmmo;
+        set
+        {
+            currentAmmo = value;
+            if (currentAmmo > Ammo) currentAmmo = Ammo;
+        }
+    }
+
     //ammo type
 }

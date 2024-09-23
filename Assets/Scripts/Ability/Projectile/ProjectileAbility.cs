@@ -22,6 +22,8 @@ public class ProjectileAbility : AbilityStrategy
 
     private bool isReady = true;
 
+    public bool IsReady => isReady;
+
     private void OnDisable()
     {
         weapon = null;

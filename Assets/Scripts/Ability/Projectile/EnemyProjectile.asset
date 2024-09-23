@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyProjectile
   m_EditorClassIdentifier: 
   cooldown: 2
-  weapon: {fileID: 11400000, guid: 7911f9fa249a4154a9a8e1438289cb4a, type: 2}
+  weapon: {fileID: 0}

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Ranged : DirectionalWeapon
@@ -32,10 +33,14 @@ public class Ranged : DirectionalWeapon
         }
     }
 
+    private void Awake()
+    {
+        WeaponData.CurrentAmmo = WeaponData.Ammo;
+    }
+
     private void Start()
     {
         ammoGeneratingProgress = 0;
-        WeaponData.CurrentAmmo = WeaponData.Ammo;
         Equip();
         
         if (lookAt == null)

@@ -30,5 +30,19 @@ public static class MoveToPoint
             yield return null;
         }
     }
+
+    public static IEnumerator Translate(Transform origin, Vector2 dir, float speed, float time)
+    {
+        var elapsed = 0f;
+
+        while (elapsed < time)
+        {
+            elapsed += Time.deltaTime;
+            var originPosition = (Vector2) origin.position;
+            
+            origin.Translate(originPosition + dir * (speed * Time.deltaTime));
+            yield return null;
+        }
+    }
     
 }

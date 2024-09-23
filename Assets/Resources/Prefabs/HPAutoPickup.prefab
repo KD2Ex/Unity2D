@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 11400000, guid: ac2d8d84c6a9a16468b4c0ddcde22ec7, type: 2}
-  pickupDelay: 0.5
+  pickupDelay: 2
   Event:
     m_PersistentCalls:
       m_Calls:
