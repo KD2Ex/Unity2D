@@ -20,5 +20,20 @@ namespace Utils.Cooldown
 
             func(true);
         }
+        
+        public static IEnumerator Start(float time, Action OnStart, Action OnStop)
+        {
+            OnStart();
+
+            var elapsed = 0f;
+
+            while (elapsed < time)
+            {
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            OnStop();
+        }
     }
 }

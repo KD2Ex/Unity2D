@@ -1,25 +1,20 @@
 using Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class AutoPickup : MonoBehaviour
 {
     [SerializeField] private StatsParticle particle;
     [SerializeField] private float pickupDelay;
-
-    private bool available;
-    private Rigidbody2D rb;
-    private bool start;
-    private Transform target;
+    [SerializeField] private Rigidbody2D rb;
 
     private float elapsedTime;
     
-    public UnityEvent Event;
+    private Transform target;
+    private bool start; 
     
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    [FormerlySerializedAs("Event")] public UnityEvent OnPickup;
 
     private void FixedUpdate()
     {
@@ -28,31 +23,39 @@ public class AutoPickup : MonoBehaviour
             elapsedTime += Time.deltaTime;
             return;
         }
-
-        available = true;
         if (!start) return;
-
+        
         var direction = (target.position - transform.position).normalized;
         rb.MovePosition(transform.position + direction * (10f * Time.deltaTime));
+
+        if ((target.position - transform.position).magnitude < .5f)
+        {
+            Consume();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-
+        
         target = other.transform;
         start = true;
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (!available) return;
         
-        var visitable = other.gameObject.GetComponent<IVisitable>(); //player
+        /*var visitable = other.gameObject.GetComponent<IVisitable>(); //player
         if (visitable == null) return;
         
         visitable.Accept(particle);
-        Event.Invoke();
+        OnPickup.Invoke();
+        gameObject.SetActive(false);*/
+    }
+
+    private void Consume()
+    {
+        var visitable = target.gameObject.GetComponent<IVisitable>(); //player
+        if (visitable == null) return;
+        
+        visitable.Accept(particle);
+        OnPickup.Invoke();
         gameObject.SetActive(false);
     }
     

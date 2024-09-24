@@ -9,6 +9,7 @@ TagManager:
   - KnownPos
   - InspectAreaPP
   - DebugText
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Ceiling
   - Maze
   - Obstacle
-  - 
+  - Dashed
   - 
   - 
   - 

@@ -83,6 +83,11 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+    }
+
+    private void Update()
+    {
         if (BlockMovement) return;
         
         Move();

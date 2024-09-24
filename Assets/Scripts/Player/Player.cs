@@ -74,7 +74,7 @@ public class Player : BaseDamagableCharacter, IDamageable
         inputReader.DashEvent += Dash;
         inputReader.AimEvent += Aim;
         
-        attackAction = _melee.Attack;
+        attackAction = MeleeAttack;
     }
 
     private void OnDisable()
@@ -116,7 +116,7 @@ public class Player : BaseDamagableCharacter, IDamageable
         {
             aimCamera.m_Priority = 9;
 
-            attackAction = _melee.Attack;
+            attackAction = MeleeAttack;
             _ranged.gameObject.SetActive(false);
             return;
         }
@@ -127,6 +127,12 @@ public class Player : BaseDamagableCharacter, IDamageable
         _ranged.gameObject.SetActive(true);
         
         // TODO: invoke GameEvent instead of hard referencing _ranged
+    }
+
+    private void MeleeAttack(Vector2 direction, float cooldown)
+    {
+        _melee.Attack(direction, cooldown);
+        dashTest.Execute(direction, 10f, .1f);
     }
     
     private void Interact()
