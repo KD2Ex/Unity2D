@@ -4,11 +4,11 @@ using UnityEngine;
 public class TranslateToPointOnAwake : MonoBehaviour
 {
     [SerializeField] private ScenesLocation locations;
-    [SerializeField] private string sceneName;
+    [SerializeField] private SceneObject scene;
     
     private void Awake()
     {
-        var location = locations.Items.FirstOrDefault(item => item.name == sceneName);
+        var location = locations.Items.FirstOrDefault(item => item.scene.Name == scene.Name);
 
         if (location != default)
         {

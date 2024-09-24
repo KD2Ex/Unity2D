@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Get random PoI name
   m_EditorClassIdentifier: 
   items:
-  - PoI_Pillars
-  - PoI_BurnedGround
-  <Item>k__BackingField: 
+  - {fileID: 11400000, guid: 68f11641c27d8dd4fb2e385015100547, type: 2}
+  - {fileID: 11400000, guid: 7d46558fbc34e484583258c4bc8b3fd6, type: 2}
+  <Item>k__BackingField: {fileID: 11400000, guid: 7d46558fbc34e484583258c4bc8b3fd6, type: 2}

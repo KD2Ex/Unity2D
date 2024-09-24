@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 [Serializable]
 public class SceneLocation
 {
-    public string name;
-    public Vector3 location;
+    public SceneObject scene;
     public Transform point;
 }
 

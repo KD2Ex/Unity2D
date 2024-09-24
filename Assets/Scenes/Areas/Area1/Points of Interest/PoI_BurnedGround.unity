@@ -106754,7 +106754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locations: {fileID: 11400000, guid: ec2507a5bd83e114789d3ab248c9a40f, type: 2}
-  sceneName: PoI_BurnedGround
+  scene: {fileID: 11400000, guid: 68f11641c27d8dd4fb2e385015100547, type: 2}
 --- !u!1 &1226750036
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,14 +7,14 @@ public class SceneLoadTrigger : MonoBehaviour
 {
     [SerializeField] private Vector2 position;
     
-    [SerializeField] private List<string> _scenesToLoad;
-    [SerializeField] private List<string> _scenesToUnload;
+    [SerializeField] private List<SceneObject> _scenesToLoad;
+    [SerializeField] private List<SceneObject> _scenesToUnload;
 
     [SerializeField] private bool onTriggerEnter;
     
     private GameObject player;
 
-    public void SetLoadScenes(List<string> newList)
+    public void SetLoadScenes(List<SceneObject> newList)
     {
         _scenesToLoad = newList;
     }
@@ -41,7 +41,7 @@ public class SceneLoadTrigger : MonoBehaviour
             for (int i = 0; i < SceneManager.sceneCount; i++)
             {
                 var loadedScene = SceneManager.GetSceneAt(i);
-                if (loadedScene.name == sceneName)
+                if (loadedScene.name == sceneName.Name)
                 {
                     isSceneLoaded = true;
                     break;
@@ -50,7 +50,7 @@ public class SceneLoadTrigger : MonoBehaviour
 
             if (!isSceneLoaded)
             {
-                SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+                SceneManager.LoadSceneAsync(sceneName.Name, LoadSceneMode.Additive);
             }
         }
     }
@@ -62,9 +62,9 @@ public class SceneLoadTrigger : MonoBehaviour
             for (int i = 0; i < SceneManager.sceneCount; i++)
             {
                 var loadedScene = SceneManager.GetSceneAt(i);
-                if (loadedScene.name == sceneName)
+                if (loadedScene.name == sceneName.Name)
                 {
-                    SceneManager.UnloadSceneAsync(sceneName);
+                    SceneManager.UnloadSceneAsync(sceneName.Name);
                 }
             }
         }

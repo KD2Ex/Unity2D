@@ -4,12 +4,13 @@ using UnityEngine;
 public class RandomLoadSceneName : MonoBehaviour
 {
     private SceneLoadTrigger loadTrigger;
-
-    [SerializeField] private GetRandomString randomize;
+    [SerializeField] private GetRandomSceneObject randomize;
 
     private void Awake()
     {
-        List<string> list = new() { randomize.Item };
+        var item = randomize.Generate();
+        
+        List<SceneObject> list = new() { item };
         
         loadTrigger = GetComponent<SceneLoadTrigger>();
         loadTrigger.SetLoadScenes(list);

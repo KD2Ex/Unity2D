@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: New Scenes Location
   m_EditorClassIdentifier: 
   Items:
-  - name: PoI_Pillars
-    location: {x: 0, y: 0, z: 0}
+  - scene: {fileID: 11400000, guid: 7d46558fbc34e484583258c4bc8b3fd6, type: 2}
     point: {fileID: 5284137546831262748, guid: 68dd5ee791051f04ab61430b6b888441, type: 3}
-  - name: PoI_BurnedGround
-    location: {x: 0, y: 0, z: 0}
+  - scene: {fileID: 11400000, guid: 68f11641c27d8dd4fb2e385015100547, type: 2}
     point: {fileID: 7006768034259407009, guid: 7ffbc3a6a9f135e4a86a05f8dc001781, type: 3}

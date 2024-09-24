@@ -10277,7 +10277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locations: {fileID: 11400000, guid: ec2507a5bd83e114789d3ab248c9a40f, type: 2}
-  sceneName: PoI_Pillars
+  scene: {fileID: 11400000, guid: 7d46558fbc34e484583258c4bc8b3fd6, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

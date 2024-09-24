@@ -25625,8 +25625,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6822268089766534394, guid: 7f779adac7d3dab40b5d65bc3d9743d5, type: 3}
+      propertyPath: _scenesToLoad.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6822268089766534394, guid: 7f779adac7d3dab40b5d65bc3d9743d5, type: 3}
       propertyPath: _scenesToLoad.Array.data[0]
-      value: PoI_BurnedGround
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
