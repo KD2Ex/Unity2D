@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Subway/Subway.unity
     guid: 9d97fbb953436a949829fd2effaf81d6
+  - enabled: 1
+    path: Assets/Scenes/TesterInn/TesterInn.unity
+    guid: 1affe3502333ab8478b9f88fc4b8e995
+  - enabled: 1
+    path: Assets/Scenes/Areas/Area1/Points of Interest/PoI_Pillars.unity
+    guid: 33e831661f5dcfb45952867a68f175eb
+  - enabled: 1
+    path: Assets/Scenes/Areas/Area1/Points of Interest/PoI_BurnedGround.unity
+    guid: 4ecd364bfd2316146823bfd502779182
   m_configObjects: {}

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13966, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: New SceneTemplate
+  m_EditorClassIdentifier: 
+  templateScene: {fileID: 102900000, guid: 33e831661f5dcfb45952867a68f175eb, type: 3}
+  templateName: Pillarrs
+  description: 
+  preview: {fileID: 0}
+  dependencies:
+  - dependency: {fileID: 4318394468838831200, guid: 68dd5ee791051f04ab61430b6b888441, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 11400000, guid: 07d5e1dfb619eab4e8ec7febb1aa808d, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: d9c7e488352701e4296b2efa529cefaf, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: 6a2108e6a275ccf44bab3091e0b48b72, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: ec2507a5bd83e114789d3ab248c9a40f, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: fa8252bbd24496d49bc02d6287306f05, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 11400000, guid: 7dac774d95752bf45b0218fae94a67aa, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: 66091c32413c18749990db8cc85fbc1b, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 11400000, guid: b1d1b04adc0285545b616e4bc4266c80, type: 2}
+    instantiationMode: 1
+  templatePipeline: {fileID: 0}
+  badge: {fileID: 0}
+  addToDefaults: 0

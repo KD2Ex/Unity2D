@@ -1,5 +1,5 @@
 using System;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,12 +7,17 @@ public class SceneLoadTrigger : MonoBehaviour
 {
     [SerializeField] private Vector2 position;
     
-    [SerializeField] private string[] _scenesToLoad;
-    [SerializeField] private string[] _scenesToUnload;
+    [SerializeField] private List<string> _scenesToLoad;
+    [SerializeField] private List<string> _scenesToUnload;
 
     [SerializeField] private bool onTriggerEnter;
-
+    
     private GameObject player;
+
+    public void SetLoadScenes(List<string> newList)
+    {
+        _scenesToLoad = newList;
+    }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -28,7 +33,7 @@ public class SceneLoadTrigger : MonoBehaviour
     public void LoadScenes()
     {
         player = FindObjectOfType<Player>().gameObject;
-        player.transform.position = position;
+        //player.transform.position = position;
         
         foreach (var sceneName in _scenesToLoad)
         {
