@@ -12,12 +12,15 @@ public class Ranged : DirectionalWeapon
     [SerializeField] private AudioClip attackSound;
 
     [SerializeField] private int ammoGeneratingThreshold;
+    [SerializeField] private bool infiniteAmmo;
 
     private int ammoGeneratingProgress;
     
     private RangedWeaponData WeaponData => inventory.Equipped.Data;
     private Vector3 Pos => transform.position;
     public bool IsReady { get; private set; } = true;
+    
+    
 
     private void Equip()
     {
@@ -69,13 +72,21 @@ public class Ranged : DirectionalWeapon
     
     public override void Attack(Vector2 dir, float cooldown = .5f)
     {
+        Debug.Log(dir);
+        RotateTowardsAttackDirection(dir);
+        
         if (WeaponData.CurrentAmmo <= 0)
         {
             // play sound
             return;
         }
+
+
+        if (!infiniteAmmo)
+        {
+            WeaponData.CurrentAmmo -= 1;
+        }
         
-        WeaponData.CurrentAmmo -= 1;
         
         projectileSpawn
             .WithDirection(dir)
@@ -84,6 +95,12 @@ public class Ranged : DirectionalWeapon
         SoundManager.instance.PlayClip(attackSound, transform);
     }
 
+    private void RotateTowardsAttackDirection(Vector2 direction)
+    {
+        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        parent.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
+    
     public void GenerateAmmo()
     {
         ammoGeneratingProgress++;

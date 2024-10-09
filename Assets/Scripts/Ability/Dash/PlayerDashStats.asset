@@ -22,7 +22,7 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: e339504b53f77c54d85e8c6411509d86, type: 2}
   dashTime:
     UseConstant: 1
-    ConstantValue: 0.2
+    ConstantValue: 0.125
     Variable: {fileID: 0}
   curve:
     serializedVersion: 2

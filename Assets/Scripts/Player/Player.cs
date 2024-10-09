@@ -19,7 +19,8 @@ public class Player : BaseDamagableCharacter, IDamageable
     [SerializeField] private Ranged _ranged;
     [SerializeField] private Dash dashTest;
     [SerializeField] private List<AbilityStrategy> abilities = new();
-
+    [SerializeField] private Transform crosshair;
+    
     [Header("Inventory")] 
     [SerializeField] private PlayerInteractableItem itemInRadius;
     
@@ -36,6 +37,8 @@ public class Player : BaseDamagableCharacter, IDamageable
     private MeleeWeapon _melee;
     private Animator _animator;
     private SpriteRenderer _sprite;
+
+    private Vector2 lookDirection;
     
     public HealthComponent Health { get; set; }
     
@@ -44,8 +47,6 @@ public class Player : BaseDamagableCharacter, IDamageable
     
     private int _flashAmountProperty = Shader.PropertyToID("_Amount");
     private float _flashTime = .3f;
-    
-    
     private delegate void AttackAction(Vector2 direction, float cooldown = 0f);
     private AttackAction attackAction;
     
@@ -73,6 +74,8 @@ public class Player : BaseDamagableCharacter, IDamageable
         inputReader.InteractEvent += Interact;
         inputReader.DashEvent += Dash;
         inputReader.AimEvent += Aim;
+        inputReader.LookEvent += OnLook;
+        inputReader.ShootEvent += OnShoot;
         
         attackAction = MeleeAttack;
     }
@@ -84,6 +87,10 @@ public class Player : BaseDamagableCharacter, IDamageable
         inputReader.InteractEvent -= Interact;
         inputReader.DashEvent -= Dash;
         inputReader.AimEvent -= Aim;
+        inputReader.LookEvent -= OnLook;
+        inputReader.ShootEvent -= OnShoot;
+        
+        
         
         Debug.Log("Disable");
     }
@@ -102,6 +109,17 @@ public class Player : BaseDamagableCharacter, IDamageable
 
     }
 
+    private void OnShoot()
+    {
+        var dir = (crosshair.position - transform.position).normalized;
+        _ranged.Attack(CalculateDirection());
+    }
+    
+    private void OnLook(Vector2 dir)
+    {
+        lookDirection = dir;
+    }
+    
     public void OnSpawnAnimationEnd()
     {
         
@@ -112,7 +130,7 @@ public class Player : BaseDamagableCharacter, IDamageable
         IsAiming = aiming;
         _aiming.OnAim(aiming);
         
-        if (!aiming)
+        if (!IsAiming)
         {
             aimCamera.m_Priority = 9;
 
@@ -120,8 +138,12 @@ public class Player : BaseDamagableCharacter, IDamageable
             _ranged.gameObject.SetActive(false);
             return;
         }
+
+        if (!GameController.connected)
+        {
+            aimCamera.m_Priority = 11;
+        }
         
-        aimCamera.m_Priority = 11;
         attackAction = _ranged.Attack;
 
         _ranged.gameObject.SetActive(true);
@@ -145,14 +167,18 @@ public class Player : BaseDamagableCharacter, IDamageable
     private Vector2 CalculateDirection()
     {
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var dir = (mousePos - transform.position).normalized;
+        Vector2 direction;
 
-        if (!_aiming)
+        if (GameController.connected)
         {
-            dir = (DetectEnemyInCone(dir) - (Vector2)transform.position).normalized;
+            direction = IsAiming ? lookDirection : _movementComponent.LastMovementDirection;
+        }
+        else
+        {
+            direction = (mousePos - transform.position).normalized;
         }
 
-        return dir;
+        return direction;
     }
 
     private Vector2 DetectEnemyInCone(Vector2 initialDirection)
@@ -211,7 +237,16 @@ public class Player : BaseDamagableCharacter, IDamageable
         /*abilities[0]
             .Execute(_rb);*/
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var direction = (mousePos - transform.position).normalized;
+        Vector2 direction;
+
+        if (GameController.connected)
+        {
+            direction = _movementComponent.LastMovementDirection;
+        }
+        else
+        {
+            direction = (mousePos - transform.position).normalized;
+        }
         
         dashTest.Execute(direction);
         StartCoroutine(Cooldown(dashTest.Cooldown.Value));

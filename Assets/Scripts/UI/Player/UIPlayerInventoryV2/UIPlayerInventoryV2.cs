@@ -42,7 +42,7 @@ public class UIPlayerInventoryV2 : MonoBehaviour
             
             inventoryTab.RemoveFromClassList(disabledStyle);
             Time.timeScale = 0f;
-            input.BlockInput();
+            input.BlockMainInput();
         }
         else
         {
@@ -50,7 +50,7 @@ public class UIPlayerInventoryV2 : MonoBehaviour
             
             Time.timeScale = 1f;
             inventoryTab.AddToClassList(disabledStyle);
-            input.UnblockInput();
+            input.UnblockMainInput();
         }
     }
     private void Start()

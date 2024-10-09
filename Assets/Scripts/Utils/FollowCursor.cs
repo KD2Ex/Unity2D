@@ -14,9 +14,11 @@ public class FollowCursor : MonoBehaviour
     [SerializeField] private float yBound = 10f;
     [SerializeField] private float minBoundRadius = 3f;
 
-
+    
     private void LateUpdate()
     {
+        if (GameController.connected) return;
+        
         var mousePos = Input.mousePosition;
         var pos =  camera.ScreenToWorldPoint(mousePos);
         pos.z = 0f;
